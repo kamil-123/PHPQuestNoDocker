@@ -10196,6 +10196,47 @@ body {
   font-style: italic;
 }
 
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 0.3em;
+  margin-bottom: 0.3em;
+}
+
+.pagination .first a,
+.pagination .previous a,
+.pagination .page a,
+.pagination .next a,
+.pagination .last a {
+  font-weight: bold;
+  font-size: 15px;
+  color: black;
+  float: left;
+  padding: 8px 16px;
+  text-decoration: none;
+  border: 1px solid black;
+  border-radius: 3px;
+}
+
+.pagination .first a:hover,
+.pagination .previous a:hover,
+.pagination .page a:hover,
+.pagination .next a:hover,
+.pagination .last a:hover {
+  background-color: lightgray;
+}
+
+.pagination .current {
+  background-color: darkgrey;
+  font-weight: bold;
+  font-size: 15px;
+  color: black;
+  float: left;
+  padding: 8px 16px;
+  border: 1px solid black;
+  border-radius: 3px;
+}
+
 
 /*!
  * Font Awesome Free 5.6.1 by @fontawesome - https://fontawesome.com

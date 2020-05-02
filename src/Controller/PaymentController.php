@@ -13,7 +13,9 @@ use App\Entity\Payment;
 use App\Repository\PaymentRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
+use Knp\Component\Pager\PaginatorInterface;
 
 /**
  * @Route("/payment")
@@ -27,11 +29,14 @@ class PaymentController extends AbstractController
      *
      * @return Response
      */
-    public function index(PaymentRepository $paymentRepository): Response
+    public function index(PaymentRepository $paymentRepository,Request $request, PaginatorInterface $paginator): Response
     {
-        // TODO: Possible task - add pagination
+        
+        // Pagination added
+        $paymentAll =$paymentRepository->findAllOrdered();
+        $payments = $paginator->paginate($paymentAll, $request->query->getInt('page',1),10);
 
-        return $this->render('payment/index.html.twig', ['payments' => $paymentRepository->findAllOrdered()]);
+        return $this->render('payment/index.html.twig', ['payments' => $payments]);
     }
 
     /**

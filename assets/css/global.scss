@@ -46,3 +46,35 @@ html, body{
 .lead{
   font-style: italic;
 }
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 0.3em;
+  margin-bottom: 0.3em;
+  .first, .previous, .page, .next, .last {
+    a {
+      font-weight: bold;
+      font-size: 15px;
+      color: black;
+      float: left;
+      padding: 8px 16px;
+      text-decoration: none;
+      border: 1px solid black;
+      border-radius: 3px;
+      }
+      a:hover {
+        background-color: lightgray;
+      }
+  }
+  .current {
+    background-color: darkgrey;
+    font-weight: bold;
+    font-size: 15px;
+    color: black;
+    float: left;
+    padding: 8px 16px;
+    border: 1px solid black;
+    border-radius: 3px;
+  }
+}
