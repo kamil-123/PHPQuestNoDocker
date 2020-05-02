@@ -8,8 +8,12 @@
         {% endblock %}
     </head>
     <body>
+        
         {% include 'include/top-bar.html.twig' %}
-        {% block body %}{% endblock %}
+        <div class="content">
+            {% block body %}{% endblock %}
+        </div>
+        {% include 'include/footer.html.twig' %}
         {{ encore_entry_script_tags('app') }}
         {% block javascripts %}
         {% endblock %}
