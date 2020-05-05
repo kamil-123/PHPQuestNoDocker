@@ -79,11 +79,17 @@ class Employee
      */
     private $addresses;
 
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Project", mappedBy="employees")
+     */
+    private $projects;
+
     public function __construct()
     {
         $this->skills = new ArrayCollection();
         $this->payments = new ArrayCollection();
         $this->addresses = new ArrayCollection();
+        $this->projects = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -243,5 +249,33 @@ class Employee
     public function getFullName(): string
     {
         return $this->firstName.' '.$this->lastName;
+    }
+
+    /**
+     * @return Collection|Project[]
+     */
+    public function getProjects(): Collection
+    {
+        return $this->projects;
+    }
+
+    public function addProject(Project $project): self
+    {
+        if (!$this->projects->contains($project)) {
+            $this->projects[] = $project;
+            $project->addEmployee($this);
+        }
+
+        return $this;
+    }
+
+    public function removeProject(Project $project): self
+    {
+        if ($this->projects->contains($project)) {
+            $this->projects->removeElement($project);
+            $project->removeEmployee($this);
+        }
+
+        return $this;
     }
 }

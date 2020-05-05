@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Project{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+   
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.12/css/select2.min.css">
+{% endblock %}
+
+{% block body %}
+    <div class="px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+        <h1 class="display-4">Create new Project</h1>
+        <p class="lead">Choose the name of new Project.</p>
+    </div>
+
+    <div class="container mb-5">
+        {{ form_start(projectForm) }}
+            {{ form_widget(projectForm) }}
+            <div class="clearfix">
+                <button class="btn">{{ button_label|default('Save') }}</button>
+                <a href="{{ path('project_index') }}" class="btn btn-primary float-right" role="button">Back to list</a>
+            </div>
+        {{ form_end(projectForm) }}
+    </div>
+
+{% endblock %}
+
+{% block javascripts %}
+  {{ parent() }}
+ 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.12/js/select2.min.js"></script>
+  <script>
+    $(document).ready(function(){
+      $('#project_employees').select2();
+    });
+  </script>
+  {% endblock %}
