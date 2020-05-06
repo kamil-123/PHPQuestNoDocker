@@ -194,6 +194,12 @@ export default class EmployeeTable extends Component {
 	 */
 	handlePageSizeChange = (pageSize, page) => this.setState({ page, pageSize });
 
+	
+	handleResetFilters = () => {
+		this.setState({ page: 0, pageSize: 10, filters: { skill: [], selectedSkillOptions: [], search: '' } });
+	};
+
+
 	componentWillMount() {
 		// We should setup the state of filters from the query (if one is present)
 		const currentUrl = this.props.location.search;
@@ -295,6 +301,11 @@ export default class EmployeeTable extends Component {
 						</div>
 						<div className="p-2">
 							<input type="text" className="form-control" placeholder="Type here to search.." value={this.state.filters.search} onChange={this.handleFulltextSearch} />
+						</div>
+						<div>
+							<div className="p-2">
+								<button className="btn btn-danger" onClick={this.handleResetFilters}>Reset Filters</button>
+							</div>
 						</div>
 						<ButtonCreateNewEmployee href={this.props.endpoints.employee.new} className="ml-auto p-2" />
 					</div>

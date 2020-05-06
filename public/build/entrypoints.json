@@ -2,26 +2,26 @@
   "entrypoints": {
     "app": {
       "js": [
-        "/build/runtime.js",
-        "/build/app.js"
+        "/build/runtime.6cf710cd.js",
+        "/build/app.aa969af2.js"
       ],
       "css": [
-        "/build/app.css"
+        "/build/app.63140524.css"
       ]
     },
     "employee_search": {
       "js": [
-        "/build/runtime.js",
-        "/build/employee_search.js"
+        "/build/runtime.6cf710cd.js",
+        "/build/employee_search.85b33435.js"
       ],
       "css": [
-        "/build/employee_search.css"
+        "/build/employee_search.45498d76.css"
       ]
     },
     "employee_form": {
       "js": [
-        "/build/runtime.js",
-        "/build/employee_form.js"
+        "/build/runtime.6cf710cd.js",
+        "/build/employee_form.676c54a4.js"
       ]
     }
   }
