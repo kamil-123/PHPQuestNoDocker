@@ -24,17 +24,15 @@ class PaymentRepository extends ServiceEntityRepository
 
     public function findAllOrdered()
     {
-        $queryBuilder = $this->getEntityManager()->createQueryBuilder();
+        
 
-        $queryBuilder
-            ->select('p')
-            ->from(Payment::class, 'p')
-            ->leftJoin('p.employee', 'e', 'WITH', 'p.employee = e.id')
-            ->addOrderBy('e.lastName', 'asc')
-            ->addOrderBy('p.month', 'desc')
-        ;
-
-        return $queryBuilder->getQuery()->getResult();
+        return $this->createQueryBuilder('payment')
+                        ->leftJoin('payment.employee','employee')
+                        ->addSelect('employee')
+                        ->addOrderBy('employee.lastName', 'asc')
+                        ->addOrderBy('payment.month', 'desc')
+                        ->getQuery()
+                        ->execute();
     }
 
     public function getStatsForSkill(int $skillId): array
